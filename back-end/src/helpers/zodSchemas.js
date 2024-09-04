@@ -5,3 +5,5 @@ export const createSchema = z.object({
     content: z.string().max(2000, {message: "A descrição deve conter no máximo 2000 caracteres"}).min(10, {message: "A descrição deve conter pelo menos 10 caracteres"}),
     author: z.string().min(3, {message: "O nome do autor deve conter pelo menos 3 caracteres"}).max(255, {message: "O nome do autor deve conter no máximo 2000 caracteres"})
 })
+
+export const getSchema = z.string().uuid({message: "UUID invalido!"});
