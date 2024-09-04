@@ -10,12 +10,12 @@ const Posts = sequelize.define(
             primaryKey: true
         },
         title: {
-            type: DataTypes.TEXT('medium'),
+            type: DataTypes.TEXT('tiny'),
             allowNull: false,
             required: true
         },
         content: {
-            type: DataTypes.TEXT('long'),
+            type: DataTypes.TEXT(),
             allowNull: false,
             required: true
         },
@@ -27,15 +27,12 @@ const Posts = sequelize.define(
         image: {
             type: DataTypes.TEXT('medium'),
             allowNull: true
-        },
-        publishDate: {
-            type: DataTypes.DATE,
-            defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
         }
 },
 {
     tableName: "Posts",
     timestamps: true,
+    createdAt: true,
     updatedAt: true
 })
 
