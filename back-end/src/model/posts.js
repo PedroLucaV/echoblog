@@ -10,12 +10,12 @@ const Posts = sequelize.define(
             primaryKey: true
         },
         title: {
-            type: DataTypes.TEXT('medium'),
+            type: DataTypes.TEXT('tiny'),
             allowNull: false,
             required: true
         },
         content: {
-            type: DataTypes.TEXT('long'),
+            type: DataTypes.TEXT(),
             allowNull: false,
             required: true
         },
