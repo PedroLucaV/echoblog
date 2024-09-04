@@ -29,7 +29,8 @@ const Posts = sequelize.define(
             allowNull: true
         },
         publishDate: {
-            type: DataTypes.NOW(),
+            type: DataTypes.DATE,
+            defaultValue: sequelize.literal('CURRENT_TIMESTAMP')
         }
 },
 {

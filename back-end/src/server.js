@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import sequelize from './config/dbconfig.js';
 import bodyParser from 'body-parser';
+import router from './routes/postRoutes.js';
 
 //dotenv
 dotenv.config();
@@ -14,8 +15,10 @@ const PORT = process.env.PORT;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(router)
+
 app.use((req, res) => {
-    res.status(404).json("Page Not Found")
+    res.status(404).json({message: "Page Not Found"})
 })
 
 sequelize.sync().then(() => {
