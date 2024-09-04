@@ -1,7 +1,9 @@
 import createPost from "./createPost.js";
+import getTasksByPage from "./getPostByPage.js";
 
 const controllers = {
-    createPost
+    createPost,
+    getTasksByPage
 }
 
 export default controllers;
