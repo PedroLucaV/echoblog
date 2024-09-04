@@ -4,6 +4,7 @@ import controllers from "../controllers/controllers.js";
 const router = Router();
 
 router.post('/posts', controllers.createPost);
-router.get('/posts', controllers.getTasksByPage)
+router.get('/posts/:id', controllers.getById);
+router.get('/posts', controllers.getTasksByPage);
 
 export default router;

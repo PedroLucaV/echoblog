@@ -1,4 +1,5 @@
 import { getSchema } from "../helpers/zodSchemas.js"
+import Posts from "../model/posts.js"
 
 const getById = async (req, res) => {
     const idValidation = getSchema.safeParse(req.params.id)
@@ -7,11 +8,11 @@ const getById = async (req, res) => {
     }
     const id = idValidation.data
     try{
-        const taskById = await Tasks.findByPk(id)
-        if(!taskById){
+        const postById = await Posts.findByPk(id)
+        if(!postById){
             return res.status(404).json({message: "Não foi encontrado a postagem pelo ID!"})
         }
-        res.status(200).json({tarefa: taskById})
+        res.status(200).json({post: postById})
     }
     catch (error){
         console.error(error)
