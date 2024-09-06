@@ -10,7 +10,8 @@ const createPost = async (req, res) => {
         return res.status(400).json({message: "Os dados recebidos no corpo da aplicação são invalidos", detalhes: formatZodError(bodyValidation.error)})
     }
 
-    const {title, content, author, image} = bodyValidation.data;
+    const {title, content, author} = bodyValidation.data;
+    const image = req.file.path.split("\\src\\")[1].replace('\\', '/');
 
     try{
         const newPost = await Posts.create({
