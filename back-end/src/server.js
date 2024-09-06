@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import sequelize from './config/dbconfig.js';
 import bodyParser from 'body-parser';
 import router from './routes/postRoutes.js';
+import { fileURLToPath } from "node:url";
+import path from 'node:path';
 
 //dotenv
 dotenv.config();
@@ -14,6 +16,12 @@ const PORT = process.env.PORT;
 //body-parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//image support configs
+const __fileName = fileURLToPath(import.meta.url);
+const __dirName = path.dirname(__fileName);
+
+app.use('/public', express.static(path.join(__dirName, 'public')));
 
 app.use(router)
 
