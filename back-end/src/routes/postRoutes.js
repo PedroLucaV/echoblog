@@ -9,6 +9,6 @@ router.get('/posts/:id', controllers.getById);
 router.get('/posts', controllers.getTasksByPage);
 router.put('/posts/:id', controllers.updatePost);
 router.delete('/posts/:id', controllers.deletePost);
-router.post('/posts/:id/image', controllers.uploadImage)
+router.post('/posts/:id/image', imageUpload.single('image'), controllers.uploadImage)
 
 export default router;
