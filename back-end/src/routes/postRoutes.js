@@ -7,5 +7,6 @@ router.post('/posts', controllers.createPost);
 router.get('/posts/:id', controllers.getById);
 router.get('/posts', controllers.getTasksByPage);
 router.put('/posts/:id', controllers.updatePost)
+router.delete('/posts/:id', controllers.delete)
 
 export default router;
