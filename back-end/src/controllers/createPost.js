@@ -11,7 +11,8 @@ const createPost = async (req, res) => {
     }
 
     const {title, content, author} = bodyValidation.data;
-    const image = req.file.path.split("\\src\\")[1].replace('\\', '/');
+    let image = req.file.path.replace('\\', '/');
+    image = image.replace('\\', '/')
 
     try{
         const newPost = await Posts.create({
