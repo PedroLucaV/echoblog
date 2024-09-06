@@ -13,7 +13,7 @@ const deletePost = async (req, res) => {
             return res.status(404).json({message: "Esta postagem não foi encontrada!"});
         }
         Posts.destroy({where: {post_id: id}});
-        res.status(204);
+        res.status(204).end();
     } catch (error) {
         console.error(error)
         res.status(400).json({ message: "Erro ao deletar a postagem" });
