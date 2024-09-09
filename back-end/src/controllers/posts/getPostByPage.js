@@ -1,4 +1,4 @@
-import Posts from "../model/posts.js";
+import Posts from '../../model/posts.js'
 
 const getTasksByPage = async (req, res) => {
     const page = parseInt(req.query.page) || 1

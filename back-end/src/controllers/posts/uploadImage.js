@@ -1,4 +1,4 @@
-import Posts from "../model/posts.js";
+import Posts from '../../model/posts.js'
 import {unlink} from 'node:fs';
 import { getSchema } from "../helpers/zodSchemas.js"
 

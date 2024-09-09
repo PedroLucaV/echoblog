@@ -1,4 +1,4 @@
-import Posts from '../model/posts.js'
+import Posts from '../../model/posts.js'
 
 import { createSchema } from '../helpers/zodSchemas.js';
 import formatZodError from '../helpers/formatZodError.js';
