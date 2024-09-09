@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import sequelize from './config/dbconfig.js';
 import bodyParser from 'body-parser';
 import postRoutes from './routes/postRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import { fileURLToPath } from "node:url";
 import path from 'node:path';
 
@@ -23,7 +24,8 @@ const __dirName = path.dirname(__fileName);
 
 app.use('/public', express.static(path.join(__dirName, 'public')));
 
-app.use('/posts', postRoutes)
+app.use('/posts', postRoutes);
+app.use('/users', userRoutes);
 
 app.use((req, res) => {
     res.status(404).json({message: "Page Not Found"})
