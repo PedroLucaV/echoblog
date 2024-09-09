@@ -1,7 +1,7 @@
 import Posts from '../../model/posts.js'
 
 import { createSchema } from '../../helpers/zodSchemas.js';
-import formatZodError from '../../helpers/zodSchemas.js';
+import formatZodError from '../../helpers/formatZodError.js';
 
 const createPost = async (req, res) => {
     const bodyValidation = createSchema.safeParse(req.body);
