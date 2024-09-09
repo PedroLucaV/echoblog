@@ -1,6 +1,6 @@
 import Posts from '../../model/posts.js'
 import {unlink} from 'node:fs';
-import { getSchema } from "../helpers/zodSchemas.js"
+import { getSchema } from '../../helpers/zodSchemas.js';
 
 const uploadImage = async (req, res) => {
     const idValidation = getSchema.safeParse(req.params.id)

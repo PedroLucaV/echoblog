@@ -1,4 +1,4 @@
-import { getSchema } from "../helpers/zodSchemas.js"
+import { getSchema } from '../../helpers/zodSchemas.js';
 import Posts from '../../model/posts.js'
 
 const getById = async (req, res) => {
