@@ -16,6 +16,12 @@ export const createUser = z.object({
     papel: z.optional(z.enum([["administrador", "autor", "leitor"]]))
 })
 
+export const updateUser = z.object({
+    nome: z.string().max(255, {message: "O titulo deve conter no máximo 255 caracteres"}).min(5, {message: "O nome conter pelo menos 5 caracteres"}),
+    email: z.string().max(255, {message: "O email deve conter no máximo 255 caracteres"}).min(5, {message: "O email conter pelo menos 5 caracteres"}).regex(emailRegex),
+    senha: z.string().max(100, {message: "A senha deve conter no máximo 255 caracteres"}).min(8, {message: "A senha conter pelo menos 8 caracteres"}).regex(passwordRegex, {message: "A senha deve conter ao menos 1 letra maiuscula, 1 letra minuscula, 1 número e 1 Caracter Especial"})
+})
+
 export const loginUserSchema = z.object({
     email: z.string(),
     senha: z.string()
