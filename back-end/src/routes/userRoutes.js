@@ -10,5 +10,6 @@ router.post('/login', controllers.loginController);
 router.put('/:id', verifyToken, controllers.editUser)
 router.get('/', verifyToken, verifyAdmin, controllers.getUsers);
 router.delete('/:id', verifyToken, verifyAdmin, controllers.deleteUser);
+router.patch('/:id/papel', verifyToken, verifyAdmin, controllers.changePaper)
 
 export default router;
