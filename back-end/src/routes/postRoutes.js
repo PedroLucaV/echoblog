@@ -1,6 +1,6 @@
 import { Router } from "express";
-import controllers from "../controllers/controllers.js";
-import imageUpload from "../controllers/imageUpload.js";
+import controllers from "../controllers/posts/controllers.js";
+import imageUpload from "../helpers/imageUpload.js";
 
 const router = Router();
 
