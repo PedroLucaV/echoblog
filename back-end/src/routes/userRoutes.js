@@ -9,5 +9,6 @@ router.post('/register', controllers.createUser);
 router.post('/login', controllers.loginController);
 router.put('/:id', verifyToken, controllers.editUser)
 router.get('/', verifyToken, verifyAdmin, controllers.getUsers);
+router.delete('/:id', verifyToken, verifyAdmin, controllers.deleteUser);
 
 export default router;
