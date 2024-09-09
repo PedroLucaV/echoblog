@@ -1,7 +1,9 @@
 import createUser from './createUser.js'
+import loginController from './loginController.js'
 
 const controllers = {
-    createUser
+    createUser,
+    loginController
 }
 
 export default controllers
