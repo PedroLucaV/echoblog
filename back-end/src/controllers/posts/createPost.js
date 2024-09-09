@@ -1,7 +1,7 @@
-import Posts from '../model/posts.js'
+import Posts from '../../model/posts.js'
 
-import { createSchema } from '../helpers/zodSchemas.js';
-import formatZodError from '../helpers/formatZodError.js';
+import { createSchema } from '../../helpers/zodSchemas.js';
+import formatZodError from '../../helpers/formatZodError.js';
 
 const createPost = async (req, res) => {
     const bodyValidation = createSchema.safeParse(req.body);
@@ -13,6 +13,10 @@ const createPost = async (req, res) => {
     const {title, content, author} = bodyValidation.data;
     let image = req.file.path.replace('\\', '/');
     image = image.replace('\\', '/')
+
+    if(!image){
+        image = '/public/default-post.jpg'
+    }
 
     try{
         const newPost = await Posts.create({

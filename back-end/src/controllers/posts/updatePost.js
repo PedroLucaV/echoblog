@@ -1,6 +1,6 @@
-import {getSchema, updateSchema} from '../helpers/zodSchemas.js';
-import formatZodError from '../helpers/formatZodError.js'
-import Posts from '../model/posts.js'
+import {getSchema, updateSchema} from '../../helpers/zodSchemas.js';
+import formatZodError from '../../helpers/formatZodError.js'
+import Posts from '../../model/posts.js'
 
 const updatePost = async (req, res) => {
     const idValidation = getSchema.safeParse(req.params.id)

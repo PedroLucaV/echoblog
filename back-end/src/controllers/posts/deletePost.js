@@ -1,5 +1,5 @@
-import { getSchema } from "../helpers/zodSchemas.js"
-import Posts from "../model/posts.js"
+import { getSchema } from '../../helpers/zodSchemas.js';
+import Posts from '../../model/posts.js'
 
 const deletePost = async (req, res) => {
     const idValidation = getSchema.safeParse(req.params.id)
