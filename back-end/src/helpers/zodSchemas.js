@@ -16,6 +16,11 @@ export const createUser = z.object({
     papel: z.optional(z.enum([["administrador", "autor", "leitor"]]))
 })
 
+export const loginUserSchema = z.object({
+    email: z.string(),
+    senha: z.string()
+})
+
 export const getSchema = z.string().uuid({message: "UUID invalido!"});
 
 export const updateSchema = z.object({
