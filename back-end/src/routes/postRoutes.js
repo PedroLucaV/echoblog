@@ -1,10 +1,12 @@
 import { Router } from "express";
 import controllers from "../controllers/posts/controllers.js";
 import imageUpload from "../helpers/imageUpload.js";
+import verifyRole from "../helpers/verifyRole.js";
+import verifyToken from "../helpers/verifyToken.js";
 
 const router = Router();
 
-router.post('/:id/image', imageUpload.single('image'), controllers.uploadImage)
+router.post('/:id/image', verifyToken, verifyRole, imageUpload.single('image'), controllers.uploadImage)
 router.post('/', imageUpload.single('image'), controllers.createPost);
 router.get('/:id', controllers.getById);
 router.get('/', controllers.getTasksByPage);
