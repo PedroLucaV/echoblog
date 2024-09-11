@@ -8,8 +8,9 @@ const uploadImage = async (req, res) => {
         return res.status(400).json({message: "Os dados recebidos no corpo da aplicação são invalidos", detalhes: formatZodError(idValidation.error)})
     }
     const id = idValidation.data;
-    let image = req.file.path;
-    image = image.split('\\public')[1].replace('\\', '/').replace('\\', '/')
+    let image = req.body.image;
+    
+    image = req.file.path.split('\\public')[1].replace('\\', '/').replace('\\', '/');
 
     if(!image){
         return res.status(400).json({message: "Não foi recebida nenhuma imagem"});
