@@ -13,14 +13,16 @@ const createUserRoute = async (req, res) => {
 
     const {nome, email, senha, papel} = bodyValidation.data;
 
-    let image = req.file;
+    let image = req.body.image;
+    
     if(!image){
-        image = '/public/users/default-user.webp'
+        if(req.file){
+            image = req.file.path.split('\\public')[1].replace('\\', '/').replace('\\', '/');
+        }else{
+            image = '/public/users/default-user.webp'
+        }
     }
-    if(image !== '/public/users/default-user.webp'){
-        image = image.path.split('\\public')[1].replace('\\', '/').replace('\\', '/')
-    }
-
+    
     //password encrypt
     const salt = await bcrypt.genSalt(12);
     const senhaHash = await bcrypt.hash(senha, salt);

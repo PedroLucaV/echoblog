@@ -11,12 +11,14 @@ const createPost = async (req, res) => {
     }
 
     const {title, content, author} = bodyValidation.data;
-    let image = req.file;
+    let image = req.body.image;
+    
     if(!image){
-        image = '/public/posts/default-post.jpg'
-    }
-    if(image !== '/public/posts/default-post.jpg'){
-        image = image.path.split('\\public')[1].replace('\\', '/').replace('\\', '/')
+        if(req.file){
+            image = req.file.path.split('\\public')[1].replace('\\', '/').replace('\\', '/');
+        }else{
+            image = '/public/posts/default-post.jpg'
+        }
     }
     
     try{
