@@ -1,4 +1,5 @@
 import sequelize from '../config/dbconfig.js'
+import Users from './users.js';
 import { DataTypes } from 'sequelize'
 
 const Posts = sequelize.define(
@@ -35,5 +36,7 @@ const Posts = sequelize.define(
     createdAt: true,
     updatedAt: true
 })
+
+Posts.belongsTo(Users)
 
 export default Posts;

@@ -6,8 +6,8 @@ import verifyToken from "../helpers/verifyToken.js";
 
 const router = Router();
 
-router.post('/:id/image', verifyToken, verifyRole, imageUpload.single('image'), controllers.uploadImage)
-router.post('/', imageUpload.single('image'), controllers.createPost);
+router.post('/:id/image', imageUpload.single('image'), controllers.uploadImage)
+router.post('/', verifyToken, verifyRole, imageUpload.single('image'), controllers.createPost);
 router.get('/:id', controllers.getById);
 router.get('/', controllers.getTasksByPage);
 router.put('/:id', controllers.updatePost);

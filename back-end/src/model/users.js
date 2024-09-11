@@ -1,5 +1,6 @@
 import sequelize from '../config/dbconfig.js'
 import { DataTypes } from 'sequelize'
+import Posts from './posts.js';
 
 const Users = sequelize.define(
     'Users', 

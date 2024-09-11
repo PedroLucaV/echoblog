@@ -12,11 +12,11 @@ const verifyAdmin = async (req, res, next) => {
     if(papelCheck.dataValues.papel !== 'administrador'){
         return res.status(403).json({message: "Você precisa ser um administrador para realizar esta função"})
     }
-
+next()
     } catch (error) {
         res.status(500).json({message: "Erro ao validar papel"})
     }
-    next()
+    
 }
 
 export default verifyAdmin;
