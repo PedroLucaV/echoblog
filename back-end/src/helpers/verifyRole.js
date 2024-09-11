@@ -2,7 +2,7 @@ import getToken from "./getToken.js"
 import getUserByToken from "./getUserByToken.js";
 import Users from "../model/users.js";
 
-const verifyAdmin = async (req, res, next) => {
+const verifyRole = async (req, res, next) => {
     try {
     const token = getToken(req);
     const user = await getUserByToken(token);
@@ -19,4 +19,4 @@ const verifyAdmin = async (req, res, next) => {
     next()
 }
 
-export default verifyAdmin;
+export default verifyRole;
