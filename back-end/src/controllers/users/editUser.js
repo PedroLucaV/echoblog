@@ -2,6 +2,7 @@ import { getSchema, updateUser } from "../../helpers/zodSchemas.js";
 import formatZodError from "../../helpers/formatZodError.js";
 import bcrypt from 'bcrypt';
 import getToken from "../../helpers/getToken.js";
+import {unlink} from 'node:fs';
 import getUserByToken from "../../helpers/getUserByToken.js";
 import Users from "../../model/users.js";
 
@@ -19,10 +20,14 @@ const editUser = async (req, res) => {
     }
 
     const {nome, email, senha, papel} = bodyValidation.data;
+    let image = req.body.image;
+    
+    
+
     const salt = await bcrypt.genSalt(12);
     const senhaHash = await bcrypt.hash(senha, salt);
 
-    const userData = {nome, email, senha: senhaHash};
+    const userData = {nome, email, senha: senhaHash, image};
 
     try{
         const token = getToken(req);
@@ -35,7 +40,15 @@ const editUser = async (req, res) => {
                 return res.status(403).json({message: "Já existe um usuario com este email!"});
             }
         }
+        if(!image){
+            if(req.file){
+                image = req.file.path.split('\\public')[1].replace('\\', '/').replace('\\', '/');
+            }else{
+                image = emailCheck.dataValues.image
+            }
+        }
 
+        console.log(emailCheck.dataValues)
         await Users.update(userData, {where: {user_id}});
 
         res.status(200).json({message: "Usuario atualizado com sucesso!"})
