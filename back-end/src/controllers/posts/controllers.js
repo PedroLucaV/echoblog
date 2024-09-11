@@ -4,6 +4,7 @@ import getById from "./getById.js";
 import updatePost from "./updatePost.js";
 import deletePost from "./deletePost.js";
 import uploadImage from './uploadImage.js'
+import getByAuthor from './getByAuthor.js'
 
 const controllers = {
     createPost,
@@ -11,7 +12,8 @@ const controllers = {
     getById,
     updatePost,
     deletePost,
-    uploadImage
+    uploadImage,
+    getByAuthor
 }
 
 export default controllers;

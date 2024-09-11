@@ -12,6 +12,7 @@ router.get('/:id', controllers.getById);
 router.get('/', controllers.getTasksByPage);
 router.put('/:id', controllers.updatePost);
 router.delete('/:id', controllers.deletePost);
+router.get('/', controllers.getByAuthor);
 
 
 export default router;
