@@ -10,7 +10,9 @@ const uploadImage = async (req, res) => {
     const id = idValidation.data;
     let image = req.body.image;
     
-    image = req.file.path.split('\\public')[1].replace('\\', '/').replace('\\', '/');
+    if(!image){
+        image = req.file.path.split('\\public')[1].replace('\\', '/').replace('\\', '/');
+    }
 
     if(!image){
         return res.status(400).json({message: "Não foi recebida nenhuma imagem"});
