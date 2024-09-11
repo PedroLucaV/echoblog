@@ -8,7 +8,7 @@ const router = Router();
 
 router.post('/register', imageUpload.single('image'), controllers.createUser);
 router.post('/login', controllers.loginController);
-router.put('/:id', verifyToken, controllers.editUser)
+router.put('/:id', verifyToken, imageUpload.single('image'), controllers.editUser)
 router.get('/', verifyToken, verifyAdmin, controllers.getUsers);
 router.delete('/:id', verifyToken, verifyAdmin, controllers.deleteUser);
 router.patch('/:id/papel', verifyToken, verifyAdmin, controllers.changePaper)
