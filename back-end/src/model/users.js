@@ -29,6 +29,10 @@ const Users = sequelize.define(
             values: ["administrador", "autor", "leitor"],
             defaultValue: "leitor",
             allowNull: true
+        },
+        image: {
+            type: DataTypes.TEXT('medium'),
+            allowNull: true
         }
 },
 {
