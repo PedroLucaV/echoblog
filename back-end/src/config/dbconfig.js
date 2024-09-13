@@ -1,11 +1,12 @@
 import { Sequelize } from "sequelize";
+import db from "./dbs.js";
 
 const sequelize = new Sequelize(
-    "echoblog",
-    "root",
-    "Sen@iDev77!.",
+    db.db,
+    db.user,
+    db.password,
     {
-        host: "localhost",
+        host: process.env.DB_HOST,  
         dialect: "mysql"
     }
 )
