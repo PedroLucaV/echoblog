@@ -1,5 +1,4 @@
 import Posts from '../../model/posts.js'
-
 import { createSchema } from '../../helpers/zodSchemas.js';
 import getToken from "../../helpers/getToken.js"
 import getUserByToken from "../../helpers/getUserByToken.js";
