@@ -5,6 +5,7 @@ import sequelize from './config/dbconfig.js';
 import bodyParser from 'body-parser';
 import postRoutes from './routes/postRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import commentRoutes from './routes/commentRoutes.js'
 import { fileURLToPath } from "node:url";
 import path from 'node:path';
 
@@ -26,6 +27,7 @@ app.use('/public', express.static(path.join(__dirName, 'public')));
 
 app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
+app.use('/comments', commentRoutes);
 
 app.use((req, res) => {
     res.status(404).json({message: "Page Not Found"})
