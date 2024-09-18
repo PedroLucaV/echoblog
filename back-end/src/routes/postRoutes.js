@@ -15,5 +15,6 @@ router.put('/:id', controllers.updatePost);
 router.delete('/:id', controllers.deletePost);
 router.get('/', controllers.getByAuthor);
 router.post('/:id/comments', verifyToken, controllersComm.PostComment)
+router.get('/:id/comments', controllersComm.GetComment)
 
 export default router;
