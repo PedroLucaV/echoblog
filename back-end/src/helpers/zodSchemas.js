@@ -9,6 +9,10 @@ export const createSchema = z.object({
     author: z.string().min(3, {message: "O nome do autor deve conter pelo menos 3 caracteres"}).max(255, {message: "O nome do autor deve conter no máximo 2000 caracteres"})
 })
 
+export const commentSchema = z.object({
+    comment: z.string().max(255, {message: "O titulo deve conter no máximo 255 caracteres"})
+})
+
 export const createUser = z.object({
     nome: z.string().max(255, {message: "O titulo deve conter no máximo 255 caracteres"}).min(5, {message: "O nome conter pelo menos 5 caracteres"}),
     email: z.string().max(255, {message: "O email deve conter no máximo 255 caracteres"}).min(5, {message: "O email conter pelo menos 5 caracteres"}).regex(emailRegex),
