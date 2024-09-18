@@ -20,7 +20,7 @@ const Comments = sequelize.define('Comments',
     tableName: 'Comments'
 })
 
-Posts.belongsToMany(Users, {through: Comments});
-Users.belongsToMany(Posts, {through: Comments});
+Posts.belongsToMany(Users, {through: {model: Comments, unique: false}});
+Users.belongsToMany(Posts, {through: {model: Comments, unique: false}});
 
 export default Comments;
