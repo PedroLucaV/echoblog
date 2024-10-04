@@ -21,13 +21,13 @@ export const createNewUser = async (req: Request, res: Response) => {
 
     let image = req.body.image;
     
-    if(!image){
-        if(req.file){
-            image = req.file.path.split('\\public')[1].replace('\\', '/').replace('\\', '/');
-        }else{
-            image = '/public/users/default-user.webp'
-        }
-    }
+    // if(!image){
+    //     if(req.file){
+    //         image = req.file.path.split('\\public')[1].replace('\\', '/').replace('\\', '/');
+    //     }else{
+    //         image = '/public/users/default-user.webp'
+    //     }
+    // }
     
     const salt = await bcrypt.genSalt(12);
     const senhaHash = await bcrypt.hash(senha, salt);
