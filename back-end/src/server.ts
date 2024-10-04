@@ -1,7 +1,6 @@
 // imports
-import express from 'express';
+import express, {Request, Response} from 'express';
 import dotenv from 'dotenv';
-import sequelize from './config/dbconfig.js';
 import bodyParser from 'body-parser';
 import postRoutes from './routes/postRoutes.js';
 import userRoutes from './routes/userRoutes.js';
@@ -29,15 +28,10 @@ app.use('/posts', postRoutes);
 app.use('/users', userRoutes);
 app.use('/comments', commentRoutes);
 
-app.use((req, res) => {
+app.use((req: Request, res: Response) => {
     res.status(404).json({message: "Page Not Found"})
 })
 
-sequelize.sync().then(() => {
-    console.log('Database connected!');
-    app.listen(PORT, () => {
-        console.log(`Server is running on port ${PORT}`);
-    });
-}).catch(error => {
-    console.error('Unable to connect to the database:', error);
-});
+app.listen(PORT, () => {
+    console.log("SERVE IN PORT ", PORT);
+})
