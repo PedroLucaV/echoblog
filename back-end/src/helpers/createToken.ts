@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
+import { Request, Response } from 'express';
 
-const createUserToken = async (user, req, res) => {
+const createUserToken = async (user:any, req:Request, res: Response) => {
     const token = jwt.sign(
         {
             nome: user.nome,

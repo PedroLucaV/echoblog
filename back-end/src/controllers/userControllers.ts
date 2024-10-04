@@ -1,14 +1,16 @@
-import {getService, createService} from '../services/userServices';
-import { createUser } from "../helpers/zodSchemas";
+import {getService, createService, checkEmail} from '../services/userServices';
+import { createUser, loginUserSchema } from "../helpers/zodSchemas";
 import bcrypt from 'bcrypt';
+import { Request, Response } from 'express';
+import createUserToken from '../helpers/createToken';
 import formatZodError from '../helpers/formatZodError';
 
-export const getUsers = async (req: any, res: any) => {
+export const getUsers = async (req: Request, res: Response) => {
     const users = await getService();
     res.status(200).json(users);
 }
 
-export const createNewUser = async (req: any, res: any) => {
+export const createNewUser = async (req: Request, res: Response) => {
     const bodyValidation = createUser.safeParse(req.body);
 
     if(!bodyValidation.success){
@@ -40,5 +42,32 @@ export const createNewUser = async (req: any, res: any) => {
         res.status(201).json({message: "Usuario criado!"});
     }catch(err){
         throw new Error("Erro ao criar usuario!");
+    }
+}
+
+export const loginController = async (req: Request, res: Response) => {
+    const bodyValidation = loginUserSchema.safeParse(req.body);
+
+    if(!bodyValidation.success){
+        return res.status(400).json({message: "Os dados recebidos no corpo da aplicação são invalidos", detalhes: formatZodError(bodyValidation.error)})
+    }
+
+    const {email, senha} = bodyValidation.data;
+
+    try{
+        const usuario = await checkEmail(email);
+        if(!usuario){
+            return res.status(404).json({message: "Usuario não encontrado!"});
+        }
+
+        const compararSenha = await bcrypt.compare(senha, usuario.password);
+
+        if(!compararSenha){
+            return res.status(403).json({message: "A senha não condiz!"})
+        }
+
+        await createUserToken(usuario, req, res);
+    }catch(err){
+        throw new Error("Erro ao logar no usuario!")
     }
 }

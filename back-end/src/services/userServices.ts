@@ -12,5 +12,14 @@ export const createService = async (user: any) => {
         prisma.users.create({data: user});
         return true;
     }
-    return false;
+    return email;
+}
+
+export const checkEmail = async (email: string) => {
+    const user = prisma.users.findFirst({where: {email}});
+
+    if(!user){
+        return false;
+    }
+    return user;
 }
