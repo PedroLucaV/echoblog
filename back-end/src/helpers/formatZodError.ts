@@ -1,9 +1,9 @@
-const formatZodError = (error) => {
+const formatZodError = (error: any) => {
     const formatedError = {
         
     }
 
-    error.issues.forEach((err) => {
+    error.issues.forEach((err: any) => {
         const path = err.path[0]
         if(!formatedError[path]){
             formatedError[path] = []
